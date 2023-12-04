@@ -24,7 +24,38 @@ public class Abonnement implements Serializable {
     private float prixAbon;
     @Enumerated (EnumType.STRING)
     private TypeAbonnement typeAbonnement;
+	public long getNumAbon() {
+		return numAbon;
+	}
+	public void setNumAbon(long numAbon) {
+		this.numAbon = numAbon;
+	}
+	public Date getDateDebut() {
+		return dateDebut;
+	}
+	public void setDateDebut(Date dateDebut) {
+		this.dateDebut = dateDebut;
+	}
+	public Date getDateFin() {
+		return dateFin;
+	}
+	public void setDateFin(Date dateFin) {
+		this.dateFin = dateFin;
+	}
+	public float getPrixAbon() {
+		return prixAbon;
+	}
+	public void setPrixAbon(float prixAbon) {
+		this.prixAbon = prixAbon;
+	}
+	public TypeAbonnement getTypeAbonnement() {
+		return typeAbonnement;
+	}
+	public void setTypeAbonnement(TypeAbonnement typeAbonnement) {
+		this.typeAbonnement = typeAbonnement;
+	}
 
+    
 
 
 }

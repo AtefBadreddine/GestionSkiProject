@@ -34,7 +34,7 @@ public class AbonnementServiceImp implements IAbonnement{
   //  @Scheduled(cron = "*/10 * * * * *")
     public void showMonthlyRecurringRevenue() {
         Long mrr =  abonnementRepository.sommeAbonMensuel(TypeAbonnement.MENSUEL);
-        log.info("your mrr : "+mrr);
+        //log.info("your mrr : "+mrr);
     }
 
 

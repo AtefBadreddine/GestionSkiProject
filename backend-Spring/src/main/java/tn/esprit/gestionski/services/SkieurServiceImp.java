@@ -90,7 +90,7 @@ public class SkieurServiceImp implements ISkieur {
     @Override
    // @Scheduled(cron = "*/30 * * * * *")
     public void testSchedule() {
-        log.info("test");
+        //log.info("test");
     }
 
     @Override
@@ -103,9 +103,9 @@ public class SkieurServiceImp implements ISkieur {
         Date endDate = calendar.getTime();
         List<Skieur> t =   sk.findByAbonnement_DateFinBetween(currentDate,endDate);
         for (Skieur skieur : t) {
-            log.info("Nom Abonnement: " + skieur.getAbonnement().getNumAbon());
-            log.info("Num Skieur: " + skieur.getNumSkieur());
-            log.info("Nom Skieur: " + skieur.getNomS());
+            //log.info("Nom Abonnement: " + skieur.getAbonnement().getNumAbon());
+            //log.info("Num Skieur: " + skieur.getNumSkieur());
+            //log.info("Nom Skieur: " + skieur.getNomS());
             System.out.println("---------------");
         }
     }
