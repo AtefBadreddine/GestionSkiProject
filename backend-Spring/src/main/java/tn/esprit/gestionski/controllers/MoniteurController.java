@@ -2,16 +2,12 @@ package tn.esprit.gestionski.controllers;
 
 import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMailMessage;
-import org.springframework.mail.javamail.MimeMessageHelper;
-import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.mail.Message;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+import tn.esprit.gestionski.entities.Cours;
 import tn.esprit.gestionski.entities.Moniteur;
+import tn.esprit.gestionski.repositories.CoursRepository;
 import tn.esprit.gestionski.services.MoniteurServiceImp;
 
 @RestController
@@ -34,10 +32,10 @@ import tn.esprit.gestionski.services.MoniteurServiceImp;
 public class MoniteurController {
 
 	@Autowired
-	private JavaMailSender emailSender;
-
-	@Autowired
 	private MoniteurServiceImp sk;
+	
+	@Autowired
+	private CoursRepository cr;
 
 	@PostMapping("/add")
 	public Moniteur add(@RequestBody Moniteur f) {
@@ -49,22 +47,16 @@ public class MoniteurController {
 		return sk.save(f);
 	}
 
-	@GetMapping("/test")
-    public String test() {
-		MimeMessagePreparator preparator = new MimeMessagePreparator() {
-			@Override
-            public void prepare(MimeMessage mimeMessage) throws Exception {
-                mimeMessage.setRecipient(Message.RecipientType.TO,
-                        new InternetAddress("khemiri.prv@gmail.com"));
-                mimeMessage.setFrom(new InternetAddress("khalil.khemiri@esprit.tn"));
-                mimeMessage.setSubject("Notification subject");
-                mimeMessage.setText("Notification");
-            }
-        };
-		
-    	emailSender.send(preparator);
-    	return "ss";
+	@GetMapping("/notify")
+    public Moniteur notify_skieur(@RequestParam long id, @RequestParam long cours_id) {
+    	return sk.notify_skieur(id, cours_id);
     }
+	
+	@GetMapping("/get_cours")
+	public List<Cours> get_cours(@RequestParam long id){
+		System.out.println(sk.get_cours(id));
+		return sk.get_cours(id);
+	}
 
 	@GetMapping("/getall")
 	public List<Moniteur> findAll() {
@@ -86,8 +78,6 @@ public class MoniteurController {
 
 	@PostMapping("/add_cours")
 	public Moniteur assign_cours(@RequestParam long id, @RequestParam long cours_id) {
-		System.out.println(id);
-		System.out.println(cours_id);
 		return sk.assign_cours(id, cours_id);
 	}
 

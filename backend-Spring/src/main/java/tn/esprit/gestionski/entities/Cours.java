@@ -6,6 +6,9 @@ import lombok.*;
 import java.io.Serializable;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Getter
 @Setter
@@ -24,8 +27,11 @@ public class Cours implements Serializable {
     private float prix;
     private int creneau;
     @ManyToOne
+    @JsonManagedReference
     private Moniteur moniteur;
+    
     @OneToMany(mappedBy = "cours")
+    @JsonBackReference
     private Set<Inscription> inscripion;
 	public long getNumCours() {
 		return numCours;
@@ -74,6 +80,12 @@ public class Cours implements Serializable {
 	}
 	public void setInscripion(Set<Inscription> inscripion) {
 		this.inscripion = inscripion;
+	}
+	@Override
+	public String toString() {
+		return "Cours\n numCours:" + numCours + "\n niveau:" + niveau + "\n typeCours:" + typeCours + "\n support:"
+				+ support + "\n prix:" + prix + "\n creneau:" + creneau + "\n moniteur: Mr/Mme" 
+				+ moniteur.getPrenomM() + " " + moniteur.getNomM();
 	}
     
     
