@@ -18,7 +18,9 @@ public class Cours implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long numCours;
     private int niveau;
+    @Enumerated
     private TypeCours typeCours;
+    @Enumerated
     private Support support;
     private float prix;
     private int creneau;
