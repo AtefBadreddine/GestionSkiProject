@@ -55,4 +55,13 @@ public class MoniteurServiceImp implements IMoniteur{
 		
 		return mr.save(m);
 	}
+	
+	@Override
+	public List<Moniteur> date_sorted(int order) {
+		if(order == 0) {
+			return mr.date_asc();
+		} else {
+			return mr.date_desc();
+		}
+	}
 }

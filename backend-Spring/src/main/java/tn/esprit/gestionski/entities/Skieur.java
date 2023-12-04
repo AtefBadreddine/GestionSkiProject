@@ -19,6 +19,7 @@ public class Skieur {
     private long numSkieur;
     private String nomS;
     private String prenomS;
+    private String email;
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     private String ville;
@@ -92,6 +93,14 @@ public class Skieur {
 
 	public void setInscripions(Set<Inscription> inscripions) {
 		this.inscripions = inscripions;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
     

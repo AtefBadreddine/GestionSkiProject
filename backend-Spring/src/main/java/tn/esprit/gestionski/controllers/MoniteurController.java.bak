@@ -51,6 +51,13 @@ public class MoniteurController {
 
 	@GetMapping("/test")
     public String test() {
+    	/*MimeMessage message = emailSender.createMimeMessage();
+    	
+    	message.setFrom("khalil.khemiri@esprit.tn");
+    	message.setTo("khemiri.prv@gmail.com");
+    	message.setSubject("test subject");
+    	message.setText("test text");*/
+    	
 		MimeMessagePreparator preparator = new MimeMessagePreparator() {
 			@Override
             public void prepare(MimeMessage mimeMessage) throws Exception {
