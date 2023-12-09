@@ -27,5 +27,6 @@ public interface IAbonnement {
     List<Abonnement> findBy2DateDebut(Date date1,Date date2);
 
     public void showMonthlyRecurringRevenue();
+    String calculateRemainingDaysAndMessageByAbonnementId(Long abonnementId);
 
 }

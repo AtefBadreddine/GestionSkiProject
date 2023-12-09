@@ -59,4 +59,13 @@ public class AbonnementController {
         return abonnementServiceImp.findBy2DateDebut(date1,date2);
     }
 
+/*service avance*/
+    @GetMapping("/calculerRestants/{abonnementId}")
+    public String calculerJoursRestants(@PathVariable Long abonnementId) {
+        return abonnementServiceImp.calculateRemainingDaysAndMessageByAbonnementId(abonnementId);
+    }
+
+
+
+
 }

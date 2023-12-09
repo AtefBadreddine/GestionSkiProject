@@ -20,4 +20,8 @@ public interface AbonnementRepository extends JpaRepository<Abonnement,Long> {
 
     @Query("SELECT SUM(a.prixAbon) FROM Skieur s JOIN s.abonnement a WHERE a.typeAbonnement = :type")
     Long sommeAbonMensuel(@Param("type") TypeAbonnement typeAbonnement);
+
+
+    @Query("SELECT DATEDIFF(a.dateFin, CURRENT_DATE) FROM Abonnement a WHERE a.numAbon = :abonnementId")
+    long calculateRemainingDaysByAbonnementIdJPQL(@Param("abonnementId") Long abonnementId);
 }
