@@ -11,10 +11,12 @@ import tn.esprit.gestionski.entities.Support;
 import tn.esprit.gestionski.entities.TypeAbonnement;
 import tn.esprit.gestionski.repositories.AbonnementRepository;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 
@@ -85,6 +87,29 @@ public class AbonnementServiceImp implements IAbonnement{
 
     }
 
+    public String extendAbonnement(Long abonnementId, int additionalDays) {
+        Optional<Abonnement> optionalAbonnement = abonnementRepository.findById(abonnementId);
+
+        if (optionalAbonnement.isPresent()) {
+            Abonnement abonnement = optionalAbonnement.get();
+            Instant instantFin = abonnement.getDateFin().toInstant();
+            Instant newInstantFin = instantFin.plusSeconds(additionalDays * 24 * 60 * 60);
+            Date newDateFin = Date.from(newInstantFin);
+
+            abonnement.setDateFin(newDateFin);
+            abonnementRepository.save(abonnement);
+
+            return "L'abonnement a été prolongé de " + additionalDays + " jours. Nouvelle date de fin : " + abonnement.getDateFin();
+        } else {
+            return "Abonnement non trouvé.";
+        }
+    }
+
+
+    @Override
+    public List<Object[]> getPourcentageParTypeAbonnement() {
+        return abonnementRepository.countAbonnementsParType();
+    }
 
 
 }

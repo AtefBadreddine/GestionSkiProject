@@ -28,5 +28,8 @@ public interface IAbonnement {
 
     public void showMonthlyRecurringRevenue();
     String calculateRemainingDaysAndMessageByAbonnementId(Long abonnementId);
+    String extendAbonnement(Long abonnementId, int additionalDays);
+
+    List<Object[]> getPourcentageParTypeAbonnement();
 
 }

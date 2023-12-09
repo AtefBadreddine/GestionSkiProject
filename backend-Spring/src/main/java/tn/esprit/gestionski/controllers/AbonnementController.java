@@ -64,8 +64,14 @@ public class AbonnementController {
     public String calculerJoursRestants(@PathVariable Long abonnementId) {
         return abonnementServiceImp.calculateRemainingDaysAndMessageByAbonnementId(abonnementId);
     }
+    @PostMapping("/prolonger/{abonnementId}")
+    public String extendAbonnement(@PathVariable Long abonnementId, @RequestParam int additionalDays) {
+        return abonnementServiceImp.extendAbonnement(abonnementId, additionalDays);
+    }
 
 
-
-
+    @GetMapping("/pourcentage-par-type")
+    public List<Object[]> getPourcentageParTypeAbonnement() {
+        return abonnementServiceImp.getPourcentageParTypeAbonnement();
+    }
 }
