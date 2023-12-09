@@ -9,6 +9,8 @@ import tn.esprit.gestionski.entities.Support;
 import tn.esprit.gestionski.entities.TypeAbonnement;
 import tn.esprit.gestionski.repositories.AbonnementRepository;
 
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +22,33 @@ public class AbonnementServiceImp implements IAbonnement{
 
     @Autowired
     AbonnementRepository abonnementRepository;
+
+    @Override
+    public Abonnement addAbonnement(Abonnement a) {
+        return abonnementRepository.save(a);
+    }
+
+    @Override
+    public Abonnement updateAbonnement(Abonnement a) {
+        return abonnementRepository.save(a);
+    }
+
+    @Override
+    public List<Abonnement> findAllAbonnement() {
+        return abonnementRepository.findAll();
+    }
+
+    @Override
+    public Abonnement findById(long numAbon) {
+        return abonnementRepository.findById(numAbon).orElse(null);
+    }
+
+    @Override
+    public void deleteAbonnement(long numAbon) {
+        abonnementRepository.deleteById(numAbon);
+
+    }
+
     @Override
     public Set<Abonnement> getAbonnementByType(TypeAbonnement type) {
         return  abonnementRepository.getSubscribtionByType(type);
@@ -36,6 +65,9 @@ public class AbonnementServiceImp implements IAbonnement{
         Long mrr =  abonnementRepository.sommeAbonMensuel(TypeAbonnement.MENSUEL);
         log.info("your mrr : "+mrr);
     }
+
+
+
 
 
 }
