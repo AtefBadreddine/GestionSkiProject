@@ -8,6 +8,8 @@ import { AbonnementListComponent } from './components/abonnement-list/abonnement
 import { AbonnementCreateComponent } from './components/abonnement-create/abonnement-create.component';
 import { AbonnementRoutingModule } from './abonnement-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateAbonnementComponent } from './components/update-abonnement/update-abonnement.component';
+
 
 
 
@@ -15,6 +17,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AbonnementListComponent,
     AbonnementCreateComponent,
+    UpdateAbonnementComponent
+    
     
 
 
@@ -22,7 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports:[
     CommonModule,
     AbonnementRoutingModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
     
   ]
 })

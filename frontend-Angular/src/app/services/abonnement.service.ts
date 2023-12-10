@@ -10,6 +10,7 @@ export class AbonnementService {
   baseUrl : string = "http://localhost:8089/Abonnement/" ;
 
   constructor(private _http:HttpClient) { }
+
   getAbonnement(id:String):Observable<Abonnement>{
 
     return this._http.get<Abonnement>(this.baseUrl+"get/"+id);
@@ -21,7 +22,7 @@ export class AbonnementService {
     return this._http.post<Abonnement>(this.baseUrl+"addAbonnement",abonnement);
   }
   updateAbonnement(abonnement : Abonnement): Observable<Abonnement> {
-    return this._http.put<Abonnement>(this.baseUrl+"updateAbonnement",abonnement);
+    return this._http.put<Abonnement>(this.baseUrl+"updateAbonnement" ,abonnement);
   }
   deleteAbonnement(numAbon : number): Observable<any> {
     return this._http.delete<any>(this.baseUrl+"delete/"+numAbon,   { observe: 'response' });
