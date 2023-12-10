@@ -11,6 +11,7 @@ export class AbonnementListComponent {
   numAbon: number = 0;
   message: string = '';
   listAbonnement : Abonnement[] = [];
+  pourcentageParType: Object[] = [];
   constructor(private abonnementService : AbonnementService){
 
   }
@@ -23,6 +24,7 @@ export class AbonnementListComponent {
         console.error('Error fetching abonnement:', error);
       }
     );
+    this.loadPourcentageParTypeAbonnement();
   }
   deleteAbonnement(id : number) {
     this.abonnementService.deleteAbonnement(id).subscribe(
@@ -46,5 +48,17 @@ calculerJoursRestants(numAbon: number): void {
     );
 }
 
+loadPourcentageParTypeAbonnement(): void {
+  this.abonnementService.getPourcentageParTypeAbonnement()
+    .subscribe(
+      (response) => {
+        this.pourcentageParType = response;
+      },
+      (error) => {
+        console.error('Erreur lors de l\'appel du service:', error);
+        // Gérer l'erreur selon vos besoins
+      }
+    );
+}
 
 }

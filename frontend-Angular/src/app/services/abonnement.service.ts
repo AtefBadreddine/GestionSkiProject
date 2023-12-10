@@ -31,5 +31,8 @@ export class AbonnementService {
     return this._http.get<string>(this.baseUrl+"calculerRestants/"+numAbon, { observe: 'response',responseType: 'text' as 'json' });
 
   }
+  getPourcentageParTypeAbonnement(): Observable<Object[]>{
+    return this._http.get<Object[]>(this.baseUrl+"pourcentage-par-type");
 
+  }
 }
