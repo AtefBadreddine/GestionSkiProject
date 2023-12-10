@@ -8,6 +8,8 @@ import { AbonnementService } from 'src/app/services/abonnement.service';
   styleUrls: ['./abonnement-list.component.scss']
 })
 export class AbonnementListComponent {
+  numAbon: number = 0;
+  message: string = '';
   listAbonnement : Abonnement[] = [];
   constructor(private abonnementService : AbonnementService){
 
@@ -31,4 +33,18 @@ export class AbonnementListComponent {
       }
     )
 }
+calculerJoursRestants(numAbon: number): void {
+  this.abonnementService.calculerJoursRestants(numAbon)
+    .subscribe(
+      (response) => {
+        this.message = `${response.body}`;
+      },
+      (error) => {
+        console.error('Erreur lors de l\'appel du service:', error);
+        this.message = 'Erreur lors du calcul des jours restants.';
+      }
+    );
+}
+
+
 }

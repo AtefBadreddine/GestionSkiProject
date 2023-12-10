@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 import { AbonnementListComponent } from './components/abonnement-list/abonnement-list.component';
 import { AbonnementCreateComponent } from './components/abonnement-create/abonnement-create.component';
 import { AbonnementRoutingModule } from './abonnement-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateAbonnementComponent } from './components/update-abonnement/update-abonnement.component';
 
 
@@ -26,7 +26,8 @@ import { UpdateAbonnementComponent } from './components/update-abonnement/update
   imports:[
     CommonModule,
     AbonnementRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
     
   ]
 })

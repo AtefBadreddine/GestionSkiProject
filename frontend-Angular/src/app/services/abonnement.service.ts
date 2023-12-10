@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Abonnement } from '../models/abonnement';
@@ -27,6 +27,9 @@ export class AbonnementService {
   deleteAbonnement(numAbon : number): Observable<any> {
     return this._http.delete<any>(this.baseUrl+"delete/"+numAbon,   { observe: 'response' });
   }
+  calculerJoursRestants(numAbon : number): Observable<HttpResponse<string>> {
+    return this._http.get<string>(this.baseUrl+"calculerRestants/"+numAbon, { observe: 'response',responseType: 'text' as 'json' });
 
+  }
 
 }

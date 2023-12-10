@@ -15,14 +15,14 @@ import { AbonnementModule } from './component_ab/abonnement.module';
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    NotFoundComponent,
+    NotFoundComponent
   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
     
   ],
   providers: [],
