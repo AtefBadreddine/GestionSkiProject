@@ -15,13 +15,13 @@ export class AbonnementService {
     return this._http.get<Abonnement>(this.baseUrl+"get/"+id);
   }
   getAllAbonnement(): Observable<Abonnement[]> {
-    return this._http.get<Abonnement[]>(this.baseUrl + 'getall');
+    return this._http.get<Abonnement[]>(this.baseUrl + 'getAll');
   }
   addAbonnement(abonnement : Abonnement): Observable<Abonnement> {
-    return this._http.post<Abonnement>(this.baseUrl+"add",abonnement);
+    return this._http.post<Abonnement>(this.baseUrl+"addAbonnement",abonnement);
   }
   updateAbonnement(abonnement : Abonnement): Observable<Abonnement> {
-    return this._http.put<Abonnement>(this.baseUrl+"update",abonnement);
+    return this._http.put<Abonnement>(this.baseUrl+"updateAbonnement",abonnement);
   }
   deleteAbonnement(numAbon : number): Observable<any> {
     return this._http.delete<any>(this.baseUrl+"delete/"+numAbon,   { observe: 'response' });

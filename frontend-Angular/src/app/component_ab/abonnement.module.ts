@@ -22,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports:[
     CommonModule,
     AbonnementRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
   ]
 })
 export class AbonnementModule { }
