@@ -1,1 +1,56 @@
-<p>abonnement-create works!</p>
+
+<div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg max-w-5xl mx-auto sm:px-6 lg:px-8 space-y-6">
+  <!-- Container for the Skier Form -->
+  <form [formGroup]="abonnementForm" (submit)="addAbonnement()">
+      <div class="border-b border-gray-900/10 pb-12">
+        <!-- Section Heading: "Ajouter un skieur" -->
+        <h2 class="text-base font-semibold leading-7 text-gray-900">Ajouter un Abonnement :</h2>
+
+        <div class="mt-8 grid grid-cols-1  gap-x-6 gap-y-8 sm:grid-cols-6 items-start">
+          <div class="sm:col-span-3">
+            <label for="dateFin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date Debut</label>
+            <input type="date" id="dateFin" formControlName="dateDebut" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+            <div *ngIf="dateDebut.invalid && (dateDebut.dirty || dateDebut.touched) " class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="dateDebut.errors['required']">La date est obligatoire</div>
+              <!-- Add more conditions for other errors -->
+            </div>
+          </div>
+          <div class="sm:col-span-3">
+            <label for="dateFin" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date Fin</label>
+            <input type="date" id="dateFin" formControlName="dateFin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+            <div *ngIf="dateFin.invalid && (dateFin.dirty || dateFin.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="dateFin.errors['required']">La date est obligatoire</div>
+              <!-- Add more conditions for other errors -->
+            </div>
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="prixAbon" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prix</label>
+            <input type="number" id="prixAbon" formControlName="prixAbon" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
+            <div *ngIf="prixAbon.invalid && (prixAbon.dirty || prixAbon.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="prixAbon.errors['required']">Le prix est obligatoire</div>
+              <!-- Add more conditions for other errors -->
+            </div>
+          </div>
+          <div class="sm:col-span-3">
+            <label for="typeAbonnement" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type d'abonnement</label>
+            <select id="typeAbonnement" formControlName="typeAbonnement" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+              <option *ngFor="let type of typeAbonnementValues" [value]="type">{{ type }}</option>
+            </select>
+            <div *ngIf="typeAbonnement.invalid && (typeAbonnement.dirty || typeAbonnement.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="typeAbonnement.errors['required']">Le type d'abonnement est obligatoire</div>
+            </div>
+          </div>
+          
+
+        </div>
+      </div>
+
+
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+      <button type="submit"  class="rounded-md bg-blue-700 cur uppercase px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 cursor-pointer">
+        Ajouter</button>
+    </div>
+  </form>
+</div>
+
