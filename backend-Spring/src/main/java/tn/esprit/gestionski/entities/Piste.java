@@ -24,42 +24,5 @@ public class Piste implements Serializable {
     private int pente;
     @ManyToMany(mappedBy = "pistes")
     private Set<Skieur> skieurs;
-	public long getNumPiste() {
-		return numPiste;
-	}
-	public void setNumPiste(long numPiste) {
-		this.numPiste = numPiste;
-	}
-	public String getNomPiste() {
-		return nomPiste;
-	}
-	public void setNomPiste(String nomPiste) {
-		this.nomPiste = nomPiste;
-	}
-	public Couleur getCouleur() {
-		return couleur;
-	}
-	public void setCouleur(Couleur couleur) {
-		this.couleur = couleur;
-	}
-	public int getLogeur() {
-		return logeur;
-	}
-	public void setLogeur(int logeur) {
-		this.logeur = logeur;
-	}
-	public int getPente() {
-		return pente;
-	}
-	public void setPente(int pente) {
-		this.pente = pente;
-	}
-	public Set<Skieur> getSkieurs() {
-		return skieurs;
-	}
-	public void setSkieurs(Set<Skieur> skieurs) {
-		this.skieurs = skieurs;
-	}
 
-    
 }

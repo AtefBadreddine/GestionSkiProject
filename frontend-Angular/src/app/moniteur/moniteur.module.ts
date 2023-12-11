@@ -21,8 +21,7 @@ import {RoutingModule} from "./moniteur-routing.module";
   imports: [
     CommonModule,
     RoutingModule,
-    ReactiveFormsModule,
-    CommonModule
+    ReactiveFormsModule
   ]
 })
 export class Module { }

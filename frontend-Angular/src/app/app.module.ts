@@ -8,6 +8,7 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {SkieurModule} from "./skieur/skieur.module";
+import { AbonnementModule } from './component_ab/abonnement.module';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,14 @@ import {SkieurModule} from "./skieur/skieur.module";
     SidebarComponent,
     NavbarComponent,
     NotFoundComponent
+  
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

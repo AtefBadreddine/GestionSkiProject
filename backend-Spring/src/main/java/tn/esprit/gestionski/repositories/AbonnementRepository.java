@@ -1,6 +1,7 @@
 package tn.esprit.gestionski.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import tn.esprit.gestionski.entities.Abonnement;
@@ -20,4 +21,16 @@ public interface AbonnementRepository extends JpaRepository<Abonnement,Long> {
 
     @Query("SELECT SUM(a.prixAbon) FROM Skieur s JOIN s.abonnement a WHERE a.typeAbonnement = :type")
     Long sommeAbonMensuel(@Param("type") TypeAbonnement typeAbonnement);
+
+
+    @Query("SELECT DATEDIFF(a.dateFin, CURRENT_DATE) FROM Abonnement a WHERE a.numAbon = :abonnementId")
+    long calculateRemainingDaysByAbonnementIdJPQL(@Param("abonnementId") Long abonnementId);
+
+    @Modifying
+    @Query("UPDATE Abonnement a SET a.dateFin = :newDateFin WHERE a.numAbon = :abonnementId")
+    int extendAbonnement(@Param("abonnementId") Long abonnementId, @Param("newDateFin") LocalDate newDateFin);
+
+    /******/
+    @Query("SELECT a.typeAbonnement, COUNT(a) FROM Abonnement a GROUP BY a.typeAbonnement")
+    List<Object[]> countAbonnementsParType();
 }
