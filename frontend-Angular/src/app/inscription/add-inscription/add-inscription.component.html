@@ -1,0 +1,48 @@
+
+<div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg max-w-5xl mx-auto sm:px-6 lg:px-8 space-y-6">
+    <form [formGroup]="InscForm" (submit)="addInscription()">
+        <div class="border-b border-gray-900/10 pb-12">
+          <h2 class="text-base font-semibold leading-7 text-gray-900">Ajouter un skieur :</h2>
+
+          <div class="mt-8 grid grid-cols-1  gap-x-6 gap-y-8 sm:grid-cols-6 items-start">
+            <div class="sm:col-span-3">
+              <label for="numSemaine" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numéro de semaine</label>
+              <input type="text" id="numSemaine" formControlName="numSemaine" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">      
+          </div>
+        </div>
+        <div class="mt-8 grid grid-cols-1  gap-x-6 gap-y-8 sm:grid-cols-6 items-start">
+            <div class="sm:col-span-3">
+              <label for="numSemaine" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numéro de cours</label>
+              <select
+              class="custom-select mb-3"
+              formControlName="numCours"
+            >
+              <option *ngFor="let c of cours" [ngValue]="c.numCours">
+                {{ c.numCours }}
+              </option>
+            </select>          
+          </div>
+        </div>
+    
+        <div class="mt-8 grid grid-cols-1  gap-x-6 gap-y-8 sm:grid-cols-6 items-start">
+            <div class="sm:col-span-3">
+              <label for="numSemaine" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Numéro de skieur</label>
+              <select
+              class="custom-select mb-3"
+              formControlName="numSkieurs"
+            >
+              <option *ngFor="let s of skieurs" [ngValue]="s.numSkieur">
+                {{ s.numSkieur }}
+              </option>
+            </select>          
+          </div>
+        </div>
+
+      <div class="mt-6 flex items-center justify-end gap-x-6">
+        <button type="submit"  class="rounded-md bg-blue-700 cur uppercase px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 cursor-pointer">
+          Ajouter</button>
+      </div>
+      </div>
+    </form>
+  </div>
+

@@ -18,6 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/inscription")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class InscriptionController {
 
     @Autowired
@@ -49,6 +50,10 @@ public class InscriptionController {
     private Inscription addInscriptionAndAssignToSkierAndCours (@RequestBody Inscription i,@PathVariable Long numCours,@PathVariable Long numSkieur) throws Exception {
         return inscriptionServiceImp.addInscriptionAndAssignToSkierAndCours(i,numCours,numSkieur);
     }
-
+    @DeleteMapping("deleteInscription/{numInscription}")
+    public void removeInscription(@PathVariable Long numInscription)
+    {
+         this.inscriptionRepository.deleteById(numInscription);
+    }
 
 }

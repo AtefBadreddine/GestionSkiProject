@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface InscriptionRepository extends JpaRepository<Inscription,Long> {
 
-    @Query("select i.numSeamiane from Inscription i join Moniteur m on i.cours member m.cours " +
+    @Query("select i.numSemaine from Inscription i join Moniteur m on i.cours member m.cours " +
             "where m.numMoniteur = :numInstructor and i.cours.support = :support")
     List<Integer> numWeeksCourseOfInstructorBySupport(@Param("numInstructor") Long numMoniteur,@Param("support") Support e_support);
 
