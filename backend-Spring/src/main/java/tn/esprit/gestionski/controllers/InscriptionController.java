@@ -4,11 +4,10 @@ package tn.esprit.gestionski.controllers;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.gestionski.entities.Inscription;
-import tn.esprit.gestionski.entities.Skieur;
-import tn.esprit.gestionski.entities.Support;
-import tn.esprit.gestionski.entities.TypeAbonnement;
+import tn.esprit.gestionski.entities.*;
+import tn.esprit.gestionski.repositories.CoursRepository;
 import tn.esprit.gestionski.repositories.InscriptionRepository;
+import tn.esprit.gestionski.repositories.SkieurRepository;
 import tn.esprit.gestionski.services.IInscription;
 import tn.esprit.gestionski.services.InscriptionServiceImp;
 import tn.esprit.gestionski.services.SkieurServiceImp;
@@ -28,17 +27,40 @@ public class InscriptionController {
     @Autowired
     private InscriptionRepository inscriptionRepository;
 
+    @Autowired
+    private CoursRepository cr;
+
+    @Autowired
+    private SkieurRepository sk;
+
     @GetMapping("/getall")
     public List<Inscription> findAllInscri() {
         return  inscriptionRepository.findAll();
     }
 
-    @PostMapping("addInscriptionAndAssignToSkieur/{numSk}")
+    @GetMapping("/findById/{numCours}")
+    public Inscription findCoursById(@PathVariable long numCours) {
+        return inscriptionRepository.findById(numCours).orElse(null);
+    }
+
+    @PostMapping("/update/{numcours}/{numskieur}")
+    private Inscription update (@RequestBody Inscription i,@PathVariable long numcours,@PathVariable long numskieur){
+       Inscription old = inscriptionRepository.findById(i.getNumInscription()).orElse(null);
+       old.setNumSemaine(i.getNumSemaine());
+       Cours c = cr.findById(numcours).orElse(null);
+       Skieur s = sk.findById(numskieur).orElse(null);
+       old.setCours(c);
+       old.setSkieur(s);
+       return inscriptionRepository.save(old);
+    }
+
+
+    @PostMapping("/addInscriptionAndAssignToSkieur/{numSk}")
     private Inscription addInscriptionAndAssignToSkieur (@RequestBody Inscription i,@PathVariable Long numSk){
         return inscriptionServiceImp.addInscriptionAndAssignToSkieur(i,numSk);
     }
 
-    @PostMapping("addInscription/addCours/{numCours}")
+    @PostMapping("/addInscription/addCours/{numCours}")
     private Inscription addInscriptionAndAssignToCour (@RequestBody Inscription i,@PathVariable Long numCours){
         return inscriptionServiceImp.addInscriptionAndAssignToCour(i,numCours);
     }

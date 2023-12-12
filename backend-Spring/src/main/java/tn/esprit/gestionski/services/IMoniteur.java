@@ -7,6 +7,7 @@ import tn.esprit.gestionski.entities.Moniteur;
 
 public interface IMoniteur {
 	public Moniteur save(Moniteur m);
+	public Moniteur update(Moniteur m);
 	public List<Moniteur> get_all();
 	public void remove(long id);
 	public Moniteur get_one(long id);

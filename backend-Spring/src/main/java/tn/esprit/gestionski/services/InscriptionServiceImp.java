@@ -44,6 +44,7 @@ public class InscriptionServiceImp implements  IInscription{
         return inscriptionRepository.numWeeksCourseOfInstructorBySupport(numMoniteur,support);
     }
 
+
     @Override
     public Optional<Inscription> addInscriptionAndAssignToSkierAndCours(int inscription, Long numCours, Long numSkieur)  {
         Optional<Skieur> s = skieurRepository.findById(numSkieur);
@@ -68,6 +69,7 @@ public class InscriptionServiceImp implements  IInscription{
         else {
             inscription.setSkieur(s.get());
         }*/
+
         Inscription inscription1 = new Inscription();
         inscription1.setNumSemaine(inscription);
         inscription1.setCours(c.get());

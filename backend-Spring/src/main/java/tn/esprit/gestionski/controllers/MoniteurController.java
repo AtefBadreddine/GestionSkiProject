@@ -46,7 +46,7 @@ public class MoniteurController {
 
 	@PutMapping("/update")
 	public Moniteur update(@RequestBody Moniteur f) {
-		return sk.save(f);
+		return sk.update(f);
 	}
 
 	@GetMapping("/notify")
@@ -56,15 +56,12 @@ public class MoniteurController {
 	
 	@GetMapping("/get_cours")
 	public List<Cours> get_cours(@RequestParam long id){
-		System.out.println(sk.get_cours(id));
 		return sk.get_cours(id);
 	}
 
 	@GetMapping("/getall")
 	public List<Moniteur> findAll() {
-		List<Moniteur> list = sk.get_all();
-		System.out.println(list);
-		return list;
+		return sk.get_all();
 	}
 
 	@GetMapping("/get/{idF}")

@@ -47,9 +47,9 @@ export class ListSkieursComponent {
     const queryParams = this.activatedRoute.snapshot.queryParamMap;
     let pageParam: number = parseInt(queryParams.get('page'));
     this.currentPage = page;
-    /*if (pageParam !== this.currentPage) {
+    if (pageParam !== this.currentPage) {
       this.changePageQueryParam(this.currentPage);
-    }*/
+    }
     let startIndex: number = (this.currentPage-1) * this.listSize ;
     let endIndex : number = startIndex + this.listSize;
     this.displayedSkieurs = this.listSkieurs.slice( startIndex,endIndex);
@@ -80,12 +80,27 @@ export class ListSkieursComponent {
   }
 
   filter(typeA : String) {
+    if (typeA.localeCompare("Tous") == 0) {
+      this.skieurService.getAllSkieurs().subscribe(
+        (res: Skieur[]) => {
+          this.listSkieurs = res;
+          this.total = this.listSkieurs.length;
+
+          this.currentPage = 1;
+          this.changePage(this.currentPage);
+        },
+        (error) => {
+          console.error('Error:', error);
+        }
+      );
+    }
     this.skieurService.filterByType(typeA).subscribe(
       (res: Skieur[]) => {
         this.listSkieurs = res;
         this.total = this.listSkieurs.length;
-
         this.currentPage = 1;
+        console.log(this.total)
+
         this.changePage(this.currentPage);
       },
       (error) => {

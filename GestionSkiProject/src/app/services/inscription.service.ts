@@ -23,6 +23,10 @@ export class InscriptionService {
   {
     return this._http.post(this.baseUrl+"/addInscription/assignToCoursAndSkieur/"+numCours+"/"+numSkieurs+"/"+inscription, null)
   }
+  update(inscription:any,numCours:any,numSkieurs:any)
+  {
+    return this._http.post(this.baseUrl+"/update/"+numCours+"/"+numSkieurs, inscription)
+  }
   getInscriptionById(id:String):Observable<any>{
 
     return this._http.get<any>(this.baseUrl+"/findById/"+id);

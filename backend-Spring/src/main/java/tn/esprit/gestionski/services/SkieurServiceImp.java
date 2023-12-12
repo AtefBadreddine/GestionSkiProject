@@ -41,7 +41,14 @@ public class SkieurServiceImp implements ISkieur {
 
     @Override
     public Skieur update(Skieur S) {
-        return sk.save(S);
+        Skieur olds = sk.findById(S.getNumSkieur()).orElse(null);
+            olds.setVille(S.getVille());
+            olds.setNomS(S.getNomS());
+            olds.setPrenomS(S.getPrenomS());
+            olds.setDateNaissance(S.getDateNaissance());
+
+        return sk.save(olds);
+
     }
 
     @Override

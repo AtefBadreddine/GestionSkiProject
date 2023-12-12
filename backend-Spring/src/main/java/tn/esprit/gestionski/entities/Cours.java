@@ -1,5 +1,6 @@
 package tn.esprit.gestionski.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,5 +30,6 @@ public class Cours {
 	@ManyToOne
 	private Moniteur moniteur;
 	@OneToMany(mappedBy = "cours")
+	@JsonBackReference
 	private Set<Inscription> inscripion;
 }

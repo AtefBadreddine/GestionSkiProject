@@ -31,6 +31,7 @@ export class UpdateComponent {
     this.service.get(this.id).subscribe(
       (data: Moniteur) => {
         this.moniteur = data;
+        console.log(this.moniteur);
         // Patch the form with the Skieur data
         this.form.patchValue({
           nomM: data.nomM,
@@ -51,12 +52,14 @@ export class UpdateComponent {
   update() {
 
     if (this.form.valid) {
-      let s : Moniteur = this.form.value;
-      this.service.update(s).subscribe(
+      this.moniteur.nomM = this.nomM.value;
+      this.moniteur.prenomM = this.prenomM.value;
+      this.moniteur.dateRecru = this.dateRecru.value;
+      this.service.update(this.moniteur).subscribe(
         (response) => {
           if (response) {
 
-            this.router.navigate(['skieurs']);
+            this.router.navigate(['moniteurs']);
           } else {
 
             console.error('Unexpected response status:');

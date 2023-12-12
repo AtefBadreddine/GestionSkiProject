@@ -54,7 +54,7 @@ updateInscription()
     numSemaine : this.InscForm.get('numSemaine').value
   }
 
-  this.inscriptionService.addInscriptionAndAssignToSkierAndCours(inscription,this.InscForm.get('numCours').value,this.InscForm.get('numSkieurs').value).subscribe(res=>{
+  this.inscriptionService.update(inscription,this.InscForm.get('numCours').value,this.InscForm.get('numSkieurs').value).subscribe(res=>{
     this.router.navigate(['/inscriptions/'])
   },err=>{
     console.log(err)

@@ -24,7 +24,7 @@ export class PaginationComponent {
   }
   ngOnChanges(changes: SimpleChanges): void {
 
-    if (changes['listSize']) {
+    if (changes['listSize'] || changes['total']) {
       this.pages = Math.ceil(this.total / this.listSize);
     }
   }

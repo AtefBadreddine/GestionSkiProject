@@ -42,6 +42,16 @@ public class MoniteurServiceImp implements IMoniteur{
 	public Moniteur save(Moniteur m) {
 		return mr.save(m);
 	}
+
+	@Override
+	public Moniteur update(Moniteur m) {
+		Moniteur old = mr.findById(m.getNumMoniteur()).orElse(null);
+		old.setNomM(m.getNomM());
+		old.setDateRecru(m.getDateRecru());
+		old.setPrenomM(m.getPrenomM());
+		return mr.save(old);
+	}
+
 	@Override
 	public List<Moniteur> get_all() {
 		// TODO Auto-generated method stub
@@ -54,7 +64,7 @@ public class MoniteurServiceImp implements IMoniteur{
 	}
 	@Override
 	public Moniteur get_one(long id) {
-		return mr.getById(id);
+		return mr.findById(id).orElse(null);
 	}
 	@Override
 	public Moniteur assign_cours(long id, long cours_id) {
@@ -81,11 +91,14 @@ public class MoniteurServiceImp implements IMoniteur{
 	public Moniteur notify_skieur(long id, long cours_id) {
 		Moniteur m = mr.findById(id).orElse(null);
 		Cours c = cr.findById(cours_id).orElse(null);
+
 		if((m == null)||(c == null)) {
+			System.out.println("empty");
 			return null;
 		}
-		
-		c.getInscripion().forEach(i -> {
+
+		cr.getRelatedCours(c.getNumCours()).forEach(i -> {
+			System.out.println(i.getSkieur().getEmail());
 			MimeMessagePreparator preparator = new MimeMessagePreparator() {
 				@Override
 	            public void prepare(MimeMessage mimeMessage) throws Exception {
@@ -94,8 +107,8 @@ public class MoniteurServiceImp implements IMoniteur{
 	                mimeMessage.setFrom(new InternetAddress("khalil.khemiri@esprit.tn"));
 	                mimeMessage.setSubject("Notification");
 	                mimeMessage.setText("Bonjour Mr/Mme " + i.getSkieur().getPrenomS() + " " + i.getSkieur().getNomS() +"\n"
-	                		+"Notification cours \n" + c.toString() + "\n"
-	                		+"Tchao!\n\nEquipe Gestion Ski\n2023"
+									+"Notification cours \n" + c.getTypeCours()  + "\n"
+									+"Tchao!\n\nEquipe Gestion Ski\n2023 "
 	                		);
 	            }
 	        };

@@ -35,7 +35,7 @@ export class AddComponent {
         (response) => {
           if (response) {
 
-            this.router.navigate(['skieurs']);
+            this.router.navigate(['moniteurs']);
           } else {
 
             console.error('Unexpected response status:');
