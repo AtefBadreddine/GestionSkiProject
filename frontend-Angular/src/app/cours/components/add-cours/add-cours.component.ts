@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CoursService } from "../../../services/cours.service";
 import { Cours } from "../../../models/cours";
 import { Router } from "@angular/router";
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-cours',
@@ -15,7 +14,6 @@ export class AddCoursComponent implements OnInit {
   coursForm: FormGroup;
 
   constructor(
-    private snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
     private coursService: CoursService,
     private router: Router
@@ -37,29 +35,16 @@ export class AddCoursComponent implements OnInit {
       this.coursService.addCours(cours).subscribe(
         (response) => {
           if (response) {
-            this.showConfirmationMessage('Course added successfully!');
-
             this.router.navigate(['cours']);
           } else {
-            this.showConfirmationMessage('error adding cours');
-
             console.error('Unexpected response status:');
           }
         },
         (error) => {
-          this.showConfirmationMessage('error adding cours');
-
           console.error('Error adding cours:', error);
         }
       );
     }
-  }
-  private showConfirmationMessage(message: string): void {
-    this.snackBar.open(message, 'Close', {
-      duration: 3000,
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-    });
   }
 
   get niveau() {
@@ -81,5 +66,4 @@ export class AddCoursComponent implements OnInit {
   get creneau() {
     return this.coursForm.get('creneau');
   }
-
 }
