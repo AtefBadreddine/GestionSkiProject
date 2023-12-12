@@ -1,0 +1,50 @@
+<div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg max-w-5xl mx-auto sm:px-6 lg:px-8 space-y-6">
+  <form [formGroup]="coursForm" (submit)="addCours()">
+    <div class="border-b border-gray-900/10 pb-12">
+      <h2 class="text-base font-semibold leading-7 text-gray-900">Ajouter un cours :</h2>
+
+      <div class="mt-8 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6 items-start">
+        <div class="sm:col-span-3">
+          <label for="niveau" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Niveau</label>
+          <input type="text" id="niveau" formControlName="niveau" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <div *ngIf="niveau.invalid && (niveau.dirty || niveau.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+            <div *ngIf="niveau.errors['required']">Niveau est obligatoire</div>
+          </div>
+        </div>
+        <div class="sm:col-span-3">
+          <label for="typeCours" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type de Cours</label>
+          <input type="text" id="typeCours" formControlName="typeCours" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <div *ngIf="typeCours.invalid && (typeCours.dirty || typeCours.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+            <div *ngIf="typeCours.errors['required']">Type de cours est obligatoire</div>
+          </div>
+        </div>
+        <div class="sm:col-span-3">
+          <label for="support" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Support</label>
+          <input type="text" id="support" formControlName="support" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <div *ngIf="support.invalid && (support.dirty || support.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+            <div *ngIf="support.errors['required']">Support est obligatoire</div>
+          </div>
+        </div>
+        <div class="sm:col-span-3">
+          <label for="prix" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prix</label>
+          <input type="number" id="prix" formControlName="prix" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <div *ngIf="prix.invalid && (prix.dirty || prix.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+            <div *ngIf="prix.errors['required']">Prix est obligatoire</div>
+          </div>
+        </div>
+        <div class="sm:col-span-3">
+          <label for="creneau" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Créneau</label>
+          <input type="text" id="creneau" formControlName="creneau" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <div *ngIf="creneau.invalid && (creneau.dirty || creneau.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+            <div *ngIf="creneau.errors['required']">Créneau est obligatoire</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-6 flex items-center justify-end gap-x-6">
+      <button type="submit" class="rounded-md bg-blue-700 cur uppercase px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-900 cursor-pointer">
+        Ajouter</button>
+    </div>
+  </form>
+</div>

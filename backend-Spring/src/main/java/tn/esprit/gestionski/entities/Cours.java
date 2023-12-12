@@ -14,18 +14,18 @@ import java.util.Set;
 @ToString
 @EqualsAndHashCode
 public class Cours implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long numCours;
-    private int niveau;
-    @Enumerated
-    private TypeCours typeCours;
-    @Enumerated
-    private Support support;
-    private float prix;
-    private int creneau;
-    @ManyToOne
-    private Moniteur moniteur;
-    @OneToMany(mappedBy = "cours")
-    private Set<Inscription> inscripion;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long numCours;
+	private int niveau;
+	@Enumerated
+	private TypeCours typeCours;
+	@Enumerated
+	private Support support;
+	private float prix;
+	private int creneau;
+	@ManyToOne
+	private Moniteur moniteur;
+	@OneToMany(mappedBy = "cours")
+	private Set<Inscription> inscripion;
 }

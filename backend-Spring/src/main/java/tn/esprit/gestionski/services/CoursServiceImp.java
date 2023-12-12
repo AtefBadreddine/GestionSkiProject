@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.gestionski.entities.Cours;
 import tn.esprit.gestionski.repositories.CoursRepository;
+import tn.esprit.gestionski.services.ICours;
 
 import java.util.List;
 

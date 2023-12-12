@@ -1,0 +1,13 @@
+<div class="stats-grid" style="display: flex; gap: 16px;">
+  <app-stats-widget *ngFor="let widget of [
+    { value: 50, valueColor: '#000', backgroundColor: '#fff', borderColor: '#000', description: 'Completion Rate' },
+    { value: 60, valueColor: '#333', backgroundColor: '#eee', borderColor: '#111', description: 'Success Rate' },
+    { value: 75, valueColor: '#444', backgroundColor: '#ddd', borderColor: '#222', description: 'Attendance' },
+    { value: 90, valueColor: '#555', backgroundColor: '#edd', borderColor: '#333', description: 'Percentage' },
+
+  ]"
+  [value]="widget.value" [valueColor]="widget.valueColor"
+  [backgroundColor]="widget.backgroundColor" [borderColor]="widget.borderColor"
+  [description]="widget.description">
+  </app-stats-widget>
+</div>
