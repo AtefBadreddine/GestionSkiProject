@@ -14,10 +14,12 @@ import tn.esprit.gestionski.services.InscriptionServiceImp;
 import tn.esprit.gestionski.services.SkieurServiceImp;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/inscription")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class InscriptionController {
 
     @Autowired
@@ -45,9 +47,9 @@ public class InscriptionController {
         return  inscriptionServiceImp.numSemaineCoursOfMoniteurBySupport(numMoniteur,support);
     }
 
-    @PostMapping("addInscription/assignToCoursAndSkieur/{numCours}/{numSkieur}")
-    private Inscription addInscriptionAndAssignToSkierAndCours (@RequestBody Inscription i,@PathVariable Long numCours,@PathVariable Long numSkieur) throws Exception {
-        return inscriptionServiceImp.addInscriptionAndAssignToSkierAndCours(i,numCours,numSkieur);
+    @PostMapping("addInscription/assignToCoursAndSkieur/{numCours}/{numSkieur}/{numSem}")
+    private Optional<Inscription> addInscriptionAndAssignToSkierAndCours (@PathVariable int numSem, @PathVariable Long numCours, @PathVariable Long numSkieur)  {
+        return inscriptionServiceImp.addInscriptionAndAssignToSkierAndCours(numSem,numCours,numSkieur);
     }
 
 

@@ -7,14 +7,15 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { NavbarComponent } from './layout/navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {SkieurModule} from "./skieur/skieur.module";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidebarComponent,
     NavbarComponent,
-    NotFoundComponent
+    NotFoundComponent,
+
   ],
   imports: [
     BrowserModule,

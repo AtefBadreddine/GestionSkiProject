@@ -8,7 +8,7 @@
             <div class="sm:col-span-3">
               <label for="nom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom</label>
               <input type="text" id="nom" formControlName="nomS" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-              <div *ngIf="nomS.invalid && (nomS.dirty || nomS.touched) " class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="nomS.invalid && (nomS.dirty || nomS.touched || submitted) " class="text-sm text-red-600 space-y-1 mt-2">
                 <div *ngIf="nomS.errors['required']">Nom est obligatoire</div>
                 <!-- Add more conditions for other errors -->
               </div>
@@ -16,7 +16,7 @@
             <div class="sm:col-span-3">
               <label for="prenom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prenom</label>
               <input type="text" id="prenom" formControlName="prenomS" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-              <div *ngIf="prenomS.invalid && (prenomS.dirty || prenomS.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="prenomS.invalid && (prenomS.dirty || prenomS.touched || submitted)" class="text-sm text-red-600 space-y-1 mt-2">
                 <div *ngIf="prenomS.errors['required']">Prenom est obligatoire</div>
                 <!-- Add more conditions for other errors -->
               </div>
@@ -25,7 +25,7 @@
             <div class="sm:col-span-3">
               <label for="ville" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ville</label>
               <input type="text" id="ville" formControlName="ville" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ">
-              <div *ngIf="ville.invalid && (ville.dirty || ville.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="ville.invalid && (ville.dirty || ville.touched || submitted)" class="text-sm text-red-600 space-y-1 mt-2">
                 <div *ngIf="ville.errors['required']">ville est obligatoire</div>
                 <!-- Add more conditions for other errors -->
               </div>
@@ -33,7 +33,7 @@
             <div class="sm:col-span-3">
               <label for="dateN" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date naissance</label>
               <input type="date" id="dateN" formControlName="dateNaissance" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5" placeholder="Select date">
-              <div *ngIf="dateNaissance.invalid && (dateNaissance.dirty || dateNaissance.touched)" class="text-sm text-red-600 space-y-1 mt-2">
+              <div *ngIf="dateNaissance.invalid && (dateNaissance.dirty || dateNaissance.touched || submitted)" class="text-sm text-red-600 space-y-1 mt-2">
                 <div *ngIf="dateNaissance.errors['required']">Date est obligatoire</div>
                 <!-- Add more conditions for other errors -->
               </div>

@@ -53,14 +53,17 @@ export class UpdateSkieurComponent {
   updateSkieur() {
 
     if (this.skieurForm.valid) {
-      let s : Skieur = this.skieurForm.value;
-      this.skieurService.updateSkieur(s).subscribe(
+      this.skieur.nomS = this.nomS.value;
+      this.skieur.prenomS = this.prenomS.value;
+      this.skieur.ville = this.ville.value;
+      this.skieur.dateNaissance = this.dateNaissance.value;
+      this.skieurService.updateSkieur(this.skieur).subscribe(
         (response) => {
           if (response) {
 
             this.router.navigate(['skieurs']);
-          } else {
 
+          } else {
             console.error('Unexpected response status:');
           }
         },

@@ -13,17 +13,21 @@ import java.util.Set;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class Cours implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long numCours;
-    private int niveau;
-    private TypeCours typeCours;
-    private Support support;
-    private float prix;
-    private int creneau;
-    @ManyToOne
-    private Moniteur moniteur;
-    @OneToMany(mappedBy = "cours")
-    private Set<Inscription> inscripion;
+public class Cours {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long numCours;
+	private int niveau;
+
+	@Enumerated(EnumType.STRING)
+	private TypeCours typeCours;
+
+	@Enumerated(EnumType.STRING)
+	private Support support;
+	private float prix;
+	private int creneau;
+	@ManyToOne
+	private Moniteur moniteur;
+	@OneToMany(mappedBy = "cours")
+	private Set<Inscription> inscripion;
 }

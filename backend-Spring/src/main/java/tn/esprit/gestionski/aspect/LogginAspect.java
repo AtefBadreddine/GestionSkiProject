@@ -16,6 +16,6 @@ public class LogginAspect {
 
     @After("execution(* tn.esprit.gestionski.services.*.add*(..))")
     public void  logMethod(JoinPoint jp) {
-        log.info("success !");
+        System.out.println("success !");
     }
 }

@@ -12,11 +12,14 @@ import tn.esprit.gestionski.services.IInscription;
 import tn.esprit.gestionski.services.ISkieur;
 import tn.esprit.gestionski.services.SkieurServiceImp;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/skieur")
 @AllArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 public class SkieurController  {
 
     @Autowired
@@ -59,10 +62,23 @@ public class SkieurController  {
         return iSkieur.addSkieurAndAssignToCours(s,numCours);
     }
 
-    @GetMapping("/skieur/getByTypeAbonnement/{typeA}")
+    @GetMapping("/getByTypeAbonnement/{typeA}")
     public List<Skieur> findByAbonnementType(@PathVariable TypeAbonnement typeA) {
         return  iSkieur.retreiveSkieurByTypeAbonnement(typeA);
     }
 
-
+    @GetMapping("getstat/{typeA}")
+    public Map<String,Long> getStat(@PathVariable long typeA) {
+        HashMap<String, Long> map = new HashMap<>();
+        Skieur s = iSkieur.findById(typeA);
+        if (s == null) {
+            map.put("skieur introuvable",0L);
+            return map;
+        }
+        long pistes = s.getPistes().size();
+        long inscriptions = iSkieur.getInscriptionsCount(typeA);
+        map.put("pistes",pistes);
+        map.put("inscriptions",inscriptions);
+        return map;
+    }
 }

@@ -26,6 +26,8 @@ public class SkieurServiceImp implements ISkieur {
 
     @Autowired
     private PisteRepository ps;
+
+    @Autowired
     private InscriptionRepository inscriptionRepository;
 
 
@@ -108,6 +110,11 @@ public class SkieurServiceImp implements ISkieur {
             log.info("Nom Skieur: " + skieur.getNomS());
             System.out.println("---------------");
         }
+    }
+
+    @Override
+    public long getInscriptionsCount(long s) {
+        return inscriptionRepository.countBySkieurNumSkieur(s);
     }
 
 

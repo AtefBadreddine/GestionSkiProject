@@ -5,4 +5,5 @@ import tn.esprit.gestionski.entities.Inscription;
 import tn.esprit.gestionski.entities.Piste;
 
 public interface PisteRepository extends JpaRepository<Piste,Long> {
+
 }

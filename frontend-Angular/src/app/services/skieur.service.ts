@@ -30,6 +30,17 @@ export class SkieurService {
   deleteSkieur(numSkieur : number): Observable<any> {
     return this._http.delete<any>(this.baseUrl+"delete/"+numSkieur,   { observe: 'response' });
   }
+  searchSkieurs(query : string , criteria : string): Observable<Skieur[]> {
+    return this._http.get<Skieur[]>(this.baseUrl + 'findByCriteria/'+query+'/'+criteria);
+  }
+
+  getStat(id : number): Observable<JSON> {
+    return this._http.get<JSON>(this.baseUrl + 'getstat/'+id);
+  }
+
+  filterByType(type : String): Observable<Skieur[]> {
+    return this._http.get<Skieur[]>(this.baseUrl + 'getByTypeAbonnement/'+type);
+  }
 
 }
 

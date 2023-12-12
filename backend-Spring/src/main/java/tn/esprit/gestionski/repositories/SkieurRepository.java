@@ -16,5 +16,4 @@ public interface SkieurRepository extends JpaRepository<Skieur,Long> {
     List<Skieur> findByAbonnement_DateFinBetween(Date start,Date end);
 
 
-
 }

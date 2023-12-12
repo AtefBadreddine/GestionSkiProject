@@ -12,7 +12,7 @@ import {Router} from "@angular/router";
 export class AddSkieurComponent {
 
     skieurForm : FormGroup;
-
+    submitted : boolean = false;
     constructor(private formBuilder :FormBuilder , private skieurService : SkieurService,
                 private router: Router) {
     }
@@ -29,7 +29,7 @@ export class AddSkieurComponent {
     }
 
   addSkieur() {
-
+    this.submitted = true;
     if (this.skieurForm.valid) {
       let s : Skieur = this.skieurForm.value;
       this.skieurService.addSkieur(s).subscribe(

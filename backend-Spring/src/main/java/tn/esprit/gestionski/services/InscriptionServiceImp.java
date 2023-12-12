@@ -45,13 +45,14 @@ public class InscriptionServiceImp implements  IInscription{
     }
 
     @Override
-    public Inscription addInscriptionAndAssignToSkierAndCours(Inscription inscription, Long numSkieur, Long numCours) throws Exception {
+    public Optional<Inscription> addInscriptionAndAssignToSkierAndCours(int inscription, Long numCours, Long numSkieur)  {
         Optional<Skieur> s = skieurRepository.findById(numSkieur);
         Optional<Cours> c =  coursRepository.findById(numCours);
         if ( c.isEmpty() || s.isEmpty()) {
-            throw new Exception();
+            System.out.println("empty");
+            return Optional.empty();
         }
-        Date dateNaissance = s.get().getDateNaissance();
+       /* Date dateNaissance = s.get().getDateNaissance();
         int year = Integer.parseInt(new SimpleDateFormat("yyyy").format(dateNaissance));
         long age = LocalDate.now().getYear() - year;
         TypeCours tc = c.get().getTypeCours();
@@ -66,11 +67,13 @@ public class InscriptionServiceImp implements  IInscription{
         }
         else {
             inscription.setSkieur(s.get());
-        }
-
-        inscription.setCours(c.get());
-        inscriptionRepository.save(inscription);
-        return inscription;
+        }*/
+        Inscription inscription1 = new Inscription();
+        inscription1.setNumSemaine(inscription);
+        inscription1.setCours(c.get());
+        inscription1.setSkieur(s.get());
+        inscriptionRepository.save(inscription1);
+        return Optional.of(inscription1);
     }
 
 
