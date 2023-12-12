@@ -32,6 +32,9 @@ public class InscriptionController {
         return  inscriptionRepository.findAll();
     }
 
+    @GetMapping("/findById/{idInscription}")
+    public Inscription findInscriptionById(@PathVariable Long idInscription) {return this.inscriptionServiceImp.findById(idInscription);}
+
     @PostMapping("addInscriptionAndAssignToSkieur/{numSk}")
     private Inscription addInscriptionAndAssignToSkieur (@RequestBody Inscription i,@PathVariable Long numSk){
         return inscriptionServiceImp.addInscriptionAndAssignToSkieur(i,numSk);

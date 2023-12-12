@@ -9,6 +9,7 @@ import tn.esprit.gestionski.repositories.CoursRepository;
 import tn.esprit.gestionski.repositories.InscriptionRepository;
 import tn.esprit.gestionski.repositories.SkieurRepository;
 
+import javax.swing.text.html.Option;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
@@ -45,7 +46,20 @@ public class InscriptionServiceImp implements  IInscription{
     }
 
     @Override
-    public Inscription addInscriptionAndAssignToSkierAndCours(Inscription inscription, Long numSkieur, Long numCours) throws Exception {
+    public Inscription findById(Long Id) {
+        Optional<Inscription> inscriptionOpt = this.inscriptionRepository.findById(Id);
+        return inscriptionOpt.orElse(null);
+    }
+
+    @Override
+    public Inscription updateInscription(Inscription inscription, Long numCours, Long numSkieur) {
+        Optional<Skieur> s = skieurRepository.findById(numSkieur);
+        Optional<Cours> c =  coursRepository.findById(numCours);
+        return null;
+    }
+
+    @Override
+    public Inscription addInscriptionAndAssignToSkierAndCours(Inscription inscription, Long numCours, Long numSkieur) throws Exception {
         Optional<Skieur> s = skieurRepository.findById(numSkieur);
         Optional<Cours> c =  coursRepository.findById(numCours);
         if ( c.isEmpty() || s.isEmpty()) {
@@ -56,12 +70,12 @@ public class InscriptionServiceImp implements  IInscription{
         long age = LocalDate.now().getYear() - year;
         TypeCours tc = c.get().getTypeCours();
         if (tc == TypeCours.COLLECTIF_ADULTE || tc == TypeCours.COLLECTIF_ENFANT) {
-            if (inscriptionRepository.countByCoursNumCours(numCours) < 6 ) {
+           // if (inscriptionRepository.countByCoursNumCours(numCours) < 6 ) {
                 if (tc == TypeCours.COLLECTIF_ENFANT && age < 18)
                     inscription.setSkieur(s.get());
                 else if ( tc == TypeCours.COLLECTIF_ADULTE && age > 17)
                     inscription.setSkieur(s.get());
-            }
+          //  }
 
         }
         else {

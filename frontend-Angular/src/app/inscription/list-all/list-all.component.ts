@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { InscriptionService } from 'src/app/services/inscription.service';
 
 @Component({
@@ -8,11 +9,13 @@ import { InscriptionService } from 'src/app/services/inscription.service';
 })
 export class ListAllComponent {
   listInsc : any[] = [] ;
-
-  constructor(private inscriptionService: InscriptionService)
+  listInsc_copy:any[]=[]
+  inscriptionId
+  constructor(private inscriptionService: InscriptionService,private router:Router)
   {
       this.inscriptionService.findAll().subscribe(res=>{
         this.listInsc=res
+        this.listInsc_copy=this.listInsc
       },err=>{
         console.log(err)
       })
@@ -27,4 +30,28 @@ export class ListAllComponent {
       })
   }
 
+  filterInscriptions()
+  {
+    this.listInsc=this.listInsc_copy
+
+ if(this.inscriptionId!='')
+  {
+    var list =[]
+    for (const inscription of this.listInsc)
+    {
+      if(inscription.numInscription == this.inscriptionId)
+      list.push(inscription)
+    }
+    
+  this.listInsc=list
+  }
+  else
+  {
+    this.listInsc=this.listInsc_copy
+  }
+  }
+  redirectToAdd()
+  {
+    this.router.navigate(['/inscriptions/add'])
+  }
 }

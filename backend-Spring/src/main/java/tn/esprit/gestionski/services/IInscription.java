@@ -11,5 +11,6 @@ public interface IInscription {
     Inscription addInscriptionAndAssignToSkierAndCours(Inscription inscription, Long numSkieur, Long numCours) throws Exception;
 
     List<Integer> numSemaineCoursOfMoniteurBySupport(Long numMoniteur, Support support);
-
+    Inscription findById(Long Id);
+    Inscription updateInscription (Inscription inscription,Long numSkieur,Long numCours);
 }

@@ -4,18 +4,21 @@ import { CommonModule } from '@angular/common';
 import { InscriptionRoutingModule } from './inscription-routing.module';
 import { ListAllComponent } from './list-all/list-all.component';
 import { AddInscriptionComponent } from './add-inscription/add-inscription.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UpdateInscriptionComponent } from './update-inscription/update-inscription.component';
 
 
 @NgModule({
   declarations: [
     ListAllComponent,
-    AddInscriptionComponent
+    AddInscriptionComponent,
+    UpdateInscriptionComponent
   ],
   imports: [
     CommonModule,
     InscriptionRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class InscriptionModule { }
