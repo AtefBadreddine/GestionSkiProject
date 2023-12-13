@@ -1,5 +1,5 @@
 package tn.esprit.gestionski.entities;
 
 public enum TypeCours {
-    COLLECTIF_ENFANT,COLLECTIF_ADULTE,PARICULIER;
+    COLLECTIF_ENFANT,COLLECTIF_ADULTE, PARICULIER
 }
