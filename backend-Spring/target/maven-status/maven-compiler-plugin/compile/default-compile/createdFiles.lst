@@ -1,5 +1,6 @@
 tn\esprit\gestionski\controllers\MoniteurController.class
 tn\esprit\gestionski\entities\Inscription.class
+tn\esprit\gestionski\services\MoniteurServiceImp$1.class
 tn\esprit\gestionski\repositories\SkieurRepository.class
 tn\esprit\gestionski\entities\Support.class
 tn\esprit\gestionski\controllers\InscriptionController.class
@@ -8,16 +9,20 @@ tn\esprit\gestionski\services\IInscription.class
 tn\esprit\gestionski\repositories\PisteRepository.class
 tn\esprit\gestionski\services\IAbonnement.class
 tn\esprit\gestionski\entities\Moniteur.class
+tn\esprit\gestionski\services\CoursServiceImp.class
 tn\esprit\gestionski\GestionSkiApplication.class
 tn\esprit\gestionski\services\ISkieur.class
 tn\esprit\gestionski\services\AbonnementServiceImp.class
 tn\esprit\gestionski\services\SkieurServiceImp.class
+tn\esprit\gestionski\services\ICours.class
 tn\esprit\gestionski\entities\Couleur.class
 tn\esprit\gestionski\entities\Piste.class
 tn\esprit\gestionski\entities\Skieur.class
 tn\esprit\gestionski\entities\Cours.class
 tn\esprit\gestionski\repositories\InscriptionRepository.class
+tn\esprit\gestionski\CorsConfig.class
 tn\esprit\gestionski\repositories\CoursRepository.class
+tn\esprit\gestionski\controllers\CoursController.class
 tn\esprit\gestionski\services\MoniteurServiceImp.class
 tn\esprit\gestionski\entities\TypeCours.class
 tn\esprit\gestionski\repositories\AbonnementRepository.class

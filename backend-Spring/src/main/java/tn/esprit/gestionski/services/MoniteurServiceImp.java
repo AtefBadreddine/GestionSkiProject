@@ -91,7 +91,8 @@ public class MoniteurServiceImp implements IMoniteur{
 	public Moniteur notify_skieur(long id, long cours_id) {
 		Moniteur m = mr.findById(id).orElse(null);
 		Cours c = cr.findById(cours_id).orElse(null);
-
+		System.out.println(m.getPrenomM());
+		System.out.println(c.getPrix());
 		if((m == null)||(c == null)) {
 			System.out.println("empty");
 			return null;
@@ -121,13 +122,13 @@ public class MoniteurServiceImp implements IMoniteur{
 	}
 	@Override
 	public List<Cours> get_cours(long id) {
-		List<Cours> list = cr.findAll();
+		/*List<Cours> list = cr.findAll();
 		List<Cours> res = new ArrayList<Cours>();
 		for(Cours c : list) {
 			if(c.getMoniteur().getNumMoniteur() == id) {
 				res.add(c);
 			}
-		}
-		return res;
+		}*/
+		return cr.getCoursWithMoniteur(id);
 	}
 }

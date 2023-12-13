@@ -73,6 +73,10 @@ public class InscriptionController {
     private Optional<Inscription> addInscriptionAndAssignToSkierAndCours (@PathVariable int numSem, @PathVariable Long numCours, @PathVariable Long numSkieur)  {
         return inscriptionServiceImp.addInscriptionAndAssignToSkierAndCours(numSem,numCours,numSkieur);
     }
-
+    @DeleteMapping("deleteInscription/{numInscription}")
+    public void removeInscription(@PathVariable Long numInscription)
+    {
+        this.inscriptionRepository.deleteById(numInscription);
+    }
 
 }

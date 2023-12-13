@@ -3,6 +3,7 @@ package tn.esprit.gestionski.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.gestionski.entities.Cours;
+import tn.esprit.gestionski.entities.Skieur;
 import tn.esprit.gestionski.repositories.CoursRepository;
 import tn.esprit.gestionski.services.ICours;
 
@@ -21,7 +22,15 @@ public class CoursServiceImp implements ICours {
 
     @Override
     public Cours updateCours(Cours cours) {
-        return coursRepository.save(cours);
+        Cours olds = coursRepository.findById(cours.getNumCours()).orElse(null);
+        olds.setCreneau(cours.getCreneau());
+        olds.setPrix(cours.getPrix());
+        olds.setNiveau(cours.getNiveau());
+        olds.setTypeCours(cours.getTypeCours());
+        olds.setSupport(cours.getSupport());
+
+
+        return coursRepository.save(olds);
     }
 
     @Override
