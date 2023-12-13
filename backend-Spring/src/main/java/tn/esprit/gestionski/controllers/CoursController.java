@@ -1,26 +1,23 @@
 package tn.esprit.gestionski.controllers;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.gestionski.entities.Cours;
+import tn.esprit.gestionski.services.CourseStatistics;
 import tn.esprit.gestionski.services.ICours;
 
 import java.util.List;
-@AllArgsConstructor
-@NoArgsConstructor
+
 @RestController
-@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "application/json")
 @RequestMapping("/cours")
 public class CoursController {
 
     @Autowired
     private ICours coursService;
 
-    @PostMapping(value = "/add", produces = "application/json", consumes = "application/json")
+    @PostMapping("/add")
     public Cours addCours(@RequestBody Cours cours) {
         return coursService.addCours(cours);
     }
@@ -44,5 +41,19 @@ public class CoursController {
     public ResponseEntity<String> deleteCours(@PathVariable long numCours) {
         coursService.deleteCours(numCours);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    //stat
+    @GetMapping("/statistics")
+    public CourseStatistics getCourseStatistics() {
+        return coursService.getCourseStatistics();
+    }
+    //findCourseByPriceRange
+
+    @GetMapping("/by-price-range")
+    public List<Cours> getCoursesByPriceRange(
+            @RequestParam double minPrice,
+            @RequestParam double maxPrice) {
+        return coursService.findCoursesByPriceRange(minPrice, maxPrice);
     }
 }

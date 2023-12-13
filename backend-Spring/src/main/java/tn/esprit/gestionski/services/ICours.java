@@ -14,4 +14,9 @@ public interface ICours {
     Cours findCoursById(long numCours);
 
     void deleteCours(long numCours);
+
+    //stat
+    CourseStatistics getCourseStatistics();
+
+    List<Cours> findCoursesByPriceRange(double minPrice, double maxPrice);
 }
